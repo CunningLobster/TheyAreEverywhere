@@ -7,13 +7,9 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] int health;
     [SerializeField] int maxHealth = 5;
 
-    void Start()
+    void OnEnable()
     {
         health = maxHealth;
-    }
-
-    void Update()
-    {
     }
 
     private void OnParticleCollision(GameObject other)
@@ -31,7 +27,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (health < 1)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
