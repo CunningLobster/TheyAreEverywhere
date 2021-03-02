@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 
 [ExecuteAlways]
+[RequireComponent(typeof(TextMeshPro))]
 public class CoordinateLabeler : MonoBehaviour
 {
     [SerializeField]Color baseColor = Color.white;
@@ -32,6 +33,7 @@ public class CoordinateLabeler : MonoBehaviour
 
     private void DisplayCoordinates()
     {
+        //put this script in the Editor folder when build the game
         coordinates.x = Mathf.RoundToInt(transform.parent.position.x / UnityEditor.EditorSnapSettings.move.x);
         coordinates.y = Mathf.RoundToInt(transform.parent.position.z / UnityEditor.EditorSnapSettings.move.z);
         

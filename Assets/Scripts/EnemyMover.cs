@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Enemy))]
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] List<Waypoint> path = new List<Waypoint>();
     [SerializeField] [Range(0f, 5f)] float speed = 1f;
+
+    Enemy enemy;
+
+    private void Start()
+    {
+        enemy = GetComponent<Enemy>();
+    }
 
     void OnEnable()
     {
@@ -18,16 +26,28 @@ public class EnemyMover : MonoBehaviour
     {
         path.Clear();
 
-        GameObject[] waypoints = GameObject.FindGameObjectsWithTag("Path");
-        foreach (var waypoint in waypoints)
+        GameObject parent = GameObject.FindGameObjectWithTag("Path");
+
+        foreach (Transform child in parent.transform)
         {
-            path.Add(waypoint.GetComponent<Waypoint>());
+            Waypoint waypoint = child.GetComponent<Waypoint>();
+
+            if (waypoint != null)
+            {
+                path.Add(waypoint);
+            }
         }
     }
 
     void ReturnToStart()
     {
         transform.position = path[0].transform.position;
+    }
+
+    void FinishPath()
+    {
+        gameObject.SetActive(false);
+        enemy.StealGold();
     }
 
     IEnumerator FollowPath()
@@ -48,6 +68,6 @@ public class EnemyMover : MonoBehaviour
             }
         }
 
-        gameObject.SetActive(false);
+        FinishPath();
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     [SerializeField] GameObject enemyPrefab;
-    [SerializeField] int poolSize = 5;
-    [SerializeField] float spawnDelay = 1f;
+    [SerializeField] [Range(0f, 50f)]int poolSize = 5;
+    [SerializeField] [Range(.1f, 30f)] float spawnDelay = 1f;
 
     GameObject[] pool;
 
@@ -27,6 +27,7 @@ public class ObjectPool : MonoBehaviour
         for (int i = 0; i < poolSize; i++)
         {
             pool[i] = Instantiate(enemyPrefab, transform);
+            pool[i].name = pool[i].name + i.ToString();
             pool[i].SetActive(false);
         }
     }

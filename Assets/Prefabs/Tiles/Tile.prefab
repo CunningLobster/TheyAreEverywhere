@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88509ebd2a5104f4faea8465c4632e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballista: {fileID: 3319749017389859987, guid: 6bd29f261d60df14e8b21e863893badd,
-    type: 3}
+  tower: {fileID: 8157943532318896558, guid: 6bd29f261d60df14e8b21e863893badd, type: 3}
   isPlaceable: 1
 --- !u!65 &741881887087344049
 BoxCollider:
@@ -250,6 +249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c5deee4259cf6c4f805e15a3137d26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  blockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &7747709141993858962
 GameObject:
   m_ObjectHideFlags: 0
